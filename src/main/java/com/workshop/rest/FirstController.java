@@ -12,17 +12,18 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @RestController
-@RequestMapping("/api")
+@ControllerAdvice
+@RequestMapping("/api/first")
 public class FirstController {
 
     @Autowired
     FirstService firstService;
 
 
-    @RequestMapping(method = {RequestMethod.POST})
+    @RequestMapping(method = {RequestMethod.GET})
     @ResponseStatus(HttpStatus.OK)
-    public void simpleRequest( @Validated @RequestBody FirstDTO firstDTO){
-
+    public FirstDTO simpleRequest(){
+        return firstService.getLastUpdatesInfo();
     }
 
 }
